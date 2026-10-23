@@ -1,0 +1,6 @@
+{
+  "name": "Akea Editorial Blog & CMS",
+  "description": "Plataforma editorial y blog minimalista inspirado 100% en Akea Homepage 2 con gestión de artículos, moderación de comentarios, perfiles de autor, difusión social y arquitectura PHP/MySQL exportable.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,0 +1,244 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Poppins", "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-serif: "Poppins", "Plus Jakarta Sans", sans-serif;
+  --font-prose: "Poppins", "Plus Jakarta Sans", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+}
+
+:root {
+  --color-primary: #FF2C54;
+  --color-secondary: #5960FF;
+  --accent-color: var(--color-primary);
+  --secondary-accent: var(--color-secondary);
+  --color-page-bg: #FFFFFF;
+  --color-surface-bg: #f7f8fc;
+  --color-footer-bg: #f7f8fc;
+  --color-logo-dot: #FF2C54;
+  --kayleen-body: #4b546e;
+  --kayleen-heading: #171920;
+  --kayleen-muted: #595F71;
+  --kayleen-border: #dcdfe7;
+}
+
+@layer base {
+  body {
+    font-family: "Poppins", "Plus Jakarta Sans", sans-serif;
+    line-height: 1.8;
+    color: #4b546e;
+    background-color: var(--color-page-bg, #ffffff);
+    letter-spacing: -0.2px;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1, h2, h3, h4, h5, h6, .editorial-heading {
+    font-family: "Poppins", "Plus Jakarta Sans", sans-serif;
+    color: #000000;
+    letter-spacing: -0.3px;
+    text-wrap: balance;
+  }
+}
+
+.font-editorial {
+  font-family: "Poppins", "Plus Jakarta Sans", sans-serif;
+}
+
+.font-prose {
+  font-family: "Poppins", "Plus Jakarta Sans", sans-serif;
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+/* ========================================================================== */
+/* EXACT KAYLEEN HOME 03 CSS RULES (https://demo.rivaxstudio.com/kayleen/home-03/) */
+/* ========================================================================== */
+
+/* 1. Kayleen Animated Underline Effect (.title-animation-underline-in-out) */
+.title-animation-underline-in-out {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-position: 0% 100%;
+  background-repeat: no-repeat;
+  background-size: 0% 2px;
+  transition: background-size 0.35s cubic-bezier(0.25, 0.8, 0.25, 1), color 0.25s ease;
+}
+
+.group:hover .title-animation-underline-in-out,
+.title-animation-underline-in-out:hover {
+  background-size: 100% 2px;
+}
+
+/* 2. Kayleen Home 03 Section 1: .tiles-layout-11 */
+.tiles-layout-11 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 250px);
+  gap: 20px;
+}
+
+.tiles-layout-11 .post-item:nth-child(3n + 1) {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+@media (max-width: 1024px) {
+  .tiles-layout-11 {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto;
+  }
+  .tiles-layout-11 .post-item:nth-child(3n + 1) {
+    grid-column: span 2;
+    height: 400px;
+  }
+  .tiles-layout-11 .post-item:not(:nth-child(3n + 1)) {
+    height: 280px;
+  }
+}
+
+@media (max-width: 767px) {
+  .tiles-layout-11 {
+    grid-template-columns: 1fr;
+  }
+  .tiles-layout-11 .post-item:nth-child(3n + 1),
+  .tiles-layout-11 .post-item:not(:nth-child(3n + 1)) {
+    grid-column: span 1;
+    height: 300px;
+  }
+}
+
+/* 3. Kayleen Home 03 Section 2: .rivax-post-kenzo-widget (5195b8d) */
+.kayleen-kenzo-card {
+  position: relative;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.25);
+}
+
+.kayleen-kenzo-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(0deg, #000000cf 0%, #f2295b00 60%);
+  pointer-events: none;
+}
+
+/* 4. Kayleen Home 03 Section 3: .rivax-post-modern-widget (d2cb69c) */
+.kayleen-modern-image-wrapper {
+  position: relative;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 10px 25px 4px rgba(23, 25, 32, 0.2118);
+}
+
+.kayleen-box-title {
+  padding: 8px 12px;
+  line-height: 1.9em;
+  color: #000000;
+  background-color: #ffffff;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+  transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+.group:hover .kayleen-box-title {
+  color: var(--color-primary);
+}
+
+/* 5. Kayleen Divider Heading Style 1 (.rivax-divider-heading.divider-style-1) */
+.rivax-divider-heading {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.rivax-divider-heading .divider-1 {
+  width: 6px;
+  height: 6px;
+  border-radius: 9999px;
+  background-color: var(--color-primary);
+  flex-shrink: 0;
+}
+
+.rivax-divider-heading .divider-2 {
+  width: 22px;
+  height: 2px;
+  background-color: var(--color-primary);
+  flex-shrink: 0;
+}
+
+.rivax-divider-heading .divider-3 {
+  flex: 1;
+  height: 1px;
+  background-color: #dcdfe7;
+}
+
+/* ========================================================================== */
+/* DYNAMIC GLOBAL ACCENT PALETTE ENGINE (REAL-TIME CSS VARIABLES)             */
+/* ========================================================================== */
+
+/* Primary Accent (--color-primary / --accent-color) */
+.text-\[\#FF2C54\],
+.hover\:text-\[\#FF2C54\]:hover,
+.group:hover .group-hover\:text-\[\#FF2C54\] {
+  color: var(--color-primary) !important;
+}
+
+.bg-\[\#FF2C54\],
+.hover\:bg-\[\#FF2C54\]:hover {
+  background-color: var(--color-primary) !important;
+}
+
+.bg-\[\#FF2C54\]\/10 {
+  background-color: color-mix(in srgb, var(--color-primary) 10%, transparent) !important;
+}
+
+.bg-\[\#FF2C54\]\/15 {
+  background-color: color-mix(in srgb, var(--color-primary) 15%, transparent) !important;
+}
+
+.border-\[\#FF2C54\],
+.hover\:border-\[\#FF2C54\]:hover,
+.focus\:border-\[\#FF2C54\]:focus {
+  border-color: var(--color-primary) !important;
+}
+
+.border-\[\#FF2C54\]\/20 {
+  border-color: color-mix(in srgb, var(--color-primary) 20%, transparent) !important;
+}
+
+.accent-\[\#FF2C54\] {
+  accent-color: var(--color-primary) !important;
+}
+
+/* Secondary Accent (--color-secondary / --secondary-accent) */
+.text-\[\#5960FF\],
+.hover\:text-\[\#5960FF\]:hover,
+.group:hover .group-hover\:text-\[\#5960FF\] {
+  color: var(--color-secondary) !important;
+}
+
+.bg-\[\#5960FF\],
+.hover\:bg-\[\#5960FF\]:hover {
+  background-color: var(--color-secondary) !important;
+}
+
+.bg-\[\#5960FF\]\/10 {
+  background-color: color-mix(in srgb, var(--color-secondary) 10%, transparent) !important;
+}
+
+.border-\[\#5960FF\],
+.hover\:border-\[\#5960FF\]:hover,
+.focus\:border-\[\#5960FF\]:focus {
+  border-color: var(--color-secondary) !important;
+}
+
+.border-\[\#5960FF\]\/20 {
+  border-color: color-mix(in srgb, var(--color-secondary) 20%, transparent) !important;
+}
+
+.accent-\[\#5960FF\] {
+  accent-color: var(--color-secondary) !important;
+}
+
